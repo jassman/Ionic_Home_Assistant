@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Configuracion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Cuenta</ion-card-title>
+    </ion-card-header>
+    <ion-item>
+      <ion-label>Nombre:</ion-label>
+      <ion-label class="user">{{usuario.nombre}}</ion-label>
+    </ion-item>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Notificaciones</ion-card-title>
+    </ion-card-header>
+    <ion-item>
+      <ion-label>Recibir notificaciones</ion-label>
+      <ion-toggle [(ngModel)]="notificacionesActivas"></ion-toggle>
+    </ion-item>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Habitaciones</ion-card-title>
+    </ion-card-header>
+    <ion-item routerLink=" /habitaciones" class="ion-activated">
+      <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      <ion-label>Gestionar habitaciones</ion-label>
+    </ion-item>
+  </ion-card>
+</ion-content>

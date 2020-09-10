@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Habitaciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list padding *ngFor="let hab of habitaciones">
+    <ion-row>
+      <ion-item class="item-habitacion">
+        <ion-label>Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="hab.nombre" (input)="enableUpdate($event, hab.id)" name="nombre"></ion-input>
+      </ion-item>
+      <ion-item class="item-habitacion">
+        <ion-label>Metros Cuadrados</ion-label>
+        <ion-input type="text" [(ngModel)]="hab.metros_cuadrados" (input)="enableUpdate($event)" name="metros_cuadrados"></ion-input>
+      </ion-item>
+      <ion-button fill="outline" disabled="true" (click)="updateHabitacion(hab)" class="btn-actualizar action" id="{{ 'btn-update-' + hab.id }}">Actualizar</ion-button>
+      <ion-button fill="outline" (click)="deleteHabitacion(hab.id)" class="btn-delete action">Eliminar</ion-button>
+    </ion-row>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <ion-button fill="outline" expand="block" (click)="showAlertCreateHabitacion()" class="btn-actualizar">Añadir habitación</ion-button>
+</ion-footer>

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Temperatura y Humedad</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <app-slider-temperatura [habitacion]="habitacionSeleccionada"></app-slider-temperatura>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Habitación</ion-label>
+          <ion-select [(ngModel)]="habitacionSeleccionada" (ionChange)="updateChart()" placeholder="Selecciona" interface="action-sheet">
+            <ion-select-option *ngFor="let habitacion of habitaciones" [value]="habitacion.id">{{habitacion.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <!--<app-slider-temperatura [habitacion]="habitacionSeleccionada"></app-slider-temperatura> -->
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Rango</ion-label>
+          <ion-select [(ngModel)]="rangoSeleccionado" (ionChange)="updateChart()" placeholder="Seleccion" interface="action-sheet">
+            <ion-select-option *ngFor="let rango of tipoSeleccionTH" [value]="rango.id">{{rango.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <canvas #lineCanvas></canvas>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+  
+
+</ion-content>

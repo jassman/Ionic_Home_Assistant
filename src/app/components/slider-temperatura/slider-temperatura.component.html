@@ -1,0 +1,43 @@
+
+<ion-row *ngIf="slider != null; else loading">
+  <!--
+  <ion-col size="1">
+    <span class="slider-nav arrow-prev" (click)="slidePrev(slider,slideWithNav)">
+      <div class="prev-icon-custom custon-nav" [class.disabled]="slider.isBeginningSlide"></div>
+    </span>
+  </ion-col>
+  -->
+  <ion-col size="12">
+    <ion-slides pager="false" [options]="sliderOpts" #slideWithNav  (ionSlideDidChange)="SlideDidChange(slider,slideWithNav)">
+      <ion-slide class="item-slider" *ngFor="let s of slider.slidesItems">
+        <ion-row class="slider-container">
+          <ion-col size="12">
+            {{s.titulo}}
+          </ion-col>
+          <ion-col class="first" size="6">
+            <h1>{{s.valor1 | number : '2.2-2'}} ºC</h1>
+            <p *ngIf="s.fecha1" >{{s.fecha1 | date:'dd/MM/yyyy HH:mm'}}</p>
+          </ion-col>
+          <ion-col class="second" size="6">
+            <h1>{{s.valor2 | number : '2.2-2'}} %</h1>
+            <p *ngIf="s.fecha2" >{{s.fecha2 | date:'dd/MM/yyyy HH:mm'}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-slide>
+    </ion-slides>
+
+    <ng-template #loading>
+      <!-- Bubbles -->
+      <ion-spinner class="loader-slider" name="bubbles"></ion-spinner>
+    </ng-template>
+
+  </ion-col>
+  <!--
+  <ion-col size="1">
+    <span class="slider-nav arrow-next" (click)="slideNext(slider,slideWithNav)">
+      <div class="next-icon-custom custon-nav" [class.disabled]="slider.isEndSlide"></div>
+    </span>
+  </ion-col>
+  -->
+</ion-row>
+
