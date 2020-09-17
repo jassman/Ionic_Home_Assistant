@@ -1,9 +1,22 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
     <ion-title>particulas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-row >
+    <ion-col *ngIf="readyData; else loading">
+      <google-chart [data]="timelineChart"></google-chart>
+      <p>Info:</p>
+      <img src="assets/img/air_quality.png">
+      <ng-template #loading>
+        <!-- Bubbles -->
+        <ion-spinner class="loader-slider" name="bubbles"></ion-spinner>
+      </ng-template>
+    </ion-col>
+  </ion-row>
 </ion-content>

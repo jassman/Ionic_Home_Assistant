@@ -47,9 +47,9 @@ export class DeteccionesPage implements OnInit {
       console.log('DeteccionesPage::getDetecciones::OK: ', dRes);
       this.detecciones = dRes;
       this.createMetadataChart();
-      console.log(this.detecciones[0].fecha_ini.getDate());
+      console.log('DeteccionesPage::getDetecciones::this.detecciones[0].fecha_ini.getDate(): ' + this.detecciones[0].fecha_ini.getDate());
     }, error => {
-      console.error('DeteccionesPage::actualizaHabitaciones::ERROR: ', error);
+      console.error('DeteccionesPage::getDetecciones::ERROR: ', error);
     });
   }
 
@@ -64,7 +64,7 @@ export class DeteccionesPage implements OnInit {
 
   updateChart(){
     const f = new Date(this.fechaSeleccionada);
-    console.log(f.getFullYear());
+    console.log('DeteccionesPage::updateChart::OK:' + f.getFullYear());
     const fechaIni = new Date(f.getFullYear(), f.getMonth(), f.getDate(), 0, 0, 0);
     const fechaFin = new Date(f.getFullYear(), f.getMonth(), f.getDate(), 23, 59, 59);
     this.getDetecciones(fechaIni.getTime() / 1000, fechaFin.getTime() / 1000);
@@ -99,7 +99,7 @@ export class DeteccionesPage implements OnInit {
         }
       }
     };
-    console.log(this.timelineChart.component);
+    console.log('DeteccionesPage::createMetadataChart::this.timelineChart.component:' + this.timelineChart.component);
     if (this.timelineChart.component !== undefined) {
       this.timelineChart.component.draw();
     }
