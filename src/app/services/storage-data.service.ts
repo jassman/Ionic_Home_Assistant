@@ -11,16 +11,27 @@ export class StorageDataService {
 
   public setUser(usuario: UsuarioAppI) {
     this.nativeStorage.setItem('usuario', {
-      usuario: usuario.nombre, 
-      password: usuario.password, 
+      usuario: usuario.nombre,
+      password: usuario.password,
       token: usuario.token}).then(
         data => {
-          console.log("StorageDataService::setUser::OK: " + data)
+          console.log('StorageDataService::setUser::OK: ' + data);
         },
         error => {
-          console.error("StorageDataService::setUser:ERROR: " + error)
+          console.error('StorageDataService::setUser:ERROR: ' + error);
         }
       );
+  }
+
+  public setAvailableSpeech(isAvailable: boolean) {
+    this.nativeStorage.setItem('speechAvailable', isAvailable).then(
+      data => {
+        console.log('StorageDataService::setAvailableSpeech::OK: ' + data);
+      },
+      error => {
+        console.error('StorageDataService::setAvailableSpeech:ERROR: ' + error);
+      }
+    );
   }
 
   public getItem(item: string) {

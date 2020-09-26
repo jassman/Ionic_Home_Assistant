@@ -21,14 +21,18 @@
     "@angular/router": "~9.1.6",
     "@ionic-native/core": "^5.0.7",
     "@ionic-native/native-storage": "^5.28.0",
+    "@ionic-native/speech-recognition": "^5.28.0",
     "@ionic-native/splash-screen": "^5.0.0",
     "@ionic-native/status-bar": "^5.0.0",
+    "@ionic-native/text-to-speech": "^5.28.0",
     "@ionic/angular": "^5.0.0",
     "chart.js": "^2.9.3",
     "chartjs-chart-timeline": "^0.4.0",
     "chartjs-plugin-zoom": "^0.7.7",
     "cordova-android": "8.1.0",
     "cordova-plugin-nativestorage": "^2.3.2",
+    "cordova-plugin-speechrecognition": "^1.2.0",
+    "cordova-plugin-tts": "^0.2.3",
     "ng2-charts": "^2.3.3",
     "ng2-google-charts": "^6.1.0",
     "rxjs": "~6.5.1",
@@ -76,7 +80,9 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-nativestorage": {}
+      "cordova-plugin-nativestorage": {},
+      "cordova-plugin-speechrecognition": {},
+      "cordova-plugin-tts": {}
     },
     "platforms": [
       "android"

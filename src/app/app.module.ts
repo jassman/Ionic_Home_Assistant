@@ -1,3 +1,5 @@
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
+import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { SliderTemperaturaComponent } from './components/slider-temperatura/slider-temperatura.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -33,6 +35,8 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx'; // Utilizacion
     StatusBar,
     SplashScreen,
     NativeStorage,
+    SpeechRecognition,
+    TextToSpeech,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

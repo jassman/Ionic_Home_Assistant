@@ -8,5 +8,54 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-row>
+    <ion-col> 
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Informacion sobre casa</ion-card-subtitle>
+          <ion-card-title>My Home</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col> 
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Consulta lo que quieras</ion-card-subtitle>
+          <ion-card-title>My Home</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item href="#" class="ion-activated">
+            <ion-icon name="wifi" slot="start"></ion-icon>
+            <ion-label>Particulas en aire</ion-label>
+          </ion-item>
+          <ion-item href="#">
+            <ion-icon name="wine" slot="start"></ion-icon>
+            <ion-label>Compuestos en aire</ion-label>
+          </ion-item>
+          <ion-item class="ion-activated">
+            <ion-icon name="warning" slot="start"></ion-icon>
+            <ion-label>Temperatura y Humedad</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="walk" slot="start"></ion-icon>
+            <ion-label>¿Quien hay en casa?</ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col> 
+      <ion-button ion-button expand="block" fill="outline" (click)="enviarComando()">
+        <ion-icon slot="start" name="mic"></ion-icon>
+        Enviar mesaje a casa
+      </ion-button>
+    </ion-col>
+  </ion-row>
 </ion-content>

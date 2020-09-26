@@ -132,6 +132,9 @@ export class ApiServerService {
     );
   }
 
+  /**
+   * DETECCIONES WIFI
+   */
   getDetecciones(tIni?: number, tFin?: number): Observable<DeteccionI[]>{
     const detecciones: DeteccionI[] = [];
     let filtro = '';
@@ -172,6 +175,9 @@ export class ApiServerService {
     );
   }
 
+  /**
+   * PARTICULAS AIRE
+   */
   getParticulasAire(): Observable<ParticulasAireI[]>{
     const particulas: ParticulasAireI[] = [];
     return this.http.get(this.apiURL + 'particulasAire/', {headers: this.miCabecera}).pipe(
@@ -181,6 +187,17 @@ export class ApiServerService {
           particulas.push(element);
         });
         return particulas;
+      })
+    );
+  }
+
+  /**
+   * VOZ
+   */
+  sendVoice(f: string): Observable<any> {
+    return this.http.post(this.apiURL + 'statsWifi/voice/', {frase: f}, {headers: this.miCabecera}).pipe(
+      map(result => {
+        return result;
       })
     );
   }
