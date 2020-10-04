@@ -55,6 +55,11 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Detecciones',
+      url: '/ahora-en-casa',
+      icon: 'settings'
+    },
+    {
+      title: 'Ahora en casa',
       url: '/detecciones',
       icon: 'wifi'
     },

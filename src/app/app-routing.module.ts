@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'particulas',
     loadChildren: () => import('./pages/particulas/particulas.module').then( m => m.ParticulasPageModule)
   },
+  {
+    path: 'ahora-en-casa',
+    loadChildren: () => import('./pages/ahora-en-casa/ahora-en-casa.module').then( m => m.AhoraEnCasaPageModule)
+  },
 ];
 
 @NgModule({

@@ -174,6 +174,9 @@ export class HabitacionesPage implements OnInit {
   hideLoader() {
     this.loadingController.dismiss().then((res) => {
       console.log('Loading dismissed!', res);
+      if (res === false) {
+        window.location.reload();
+      }
     }).catch((error) => {
       console.log('error', error);
     });

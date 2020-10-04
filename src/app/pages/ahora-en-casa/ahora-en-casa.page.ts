@@ -1,42 +1,36 @@
-import { DeteccionDispositivoI } from './../../model/deteccion-dispositivo.model';
-import { DeteccionI } from './../../model/deteccion.model';
-import { GoogleChartInterface } from 'ng2-google-charts';
 import { UsuarioAppI } from './../../model/usuario-app.model';
+import { GoogleChartInterface } from 'ng2-google-charts';
+import { DeteccionI } from './../../model/deteccion.model';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { ApiServerService } from './../../services/api-server.service';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-detecciones',
-  templateUrl: './detecciones.page.html',
-  styleUrls: ['./detecciones.page.scss'],
+  selector: 'app-ahora-en-casa',
+  templateUrl: './ahora-en-casa.page.html',
+  styleUrls: ['./ahora-en-casa.page.scss'],
 })
-export class DeteccionesPage implements OnInit {
+export class AhoraEnCasaPage implements OnInit {
 
   detecciones: DeteccionI[];
-  deteccionesInHome: DeteccionDispositivoI[];
+  readyData = false;
   timelineChart: GoogleChartInterface = {
     chartType: 'Timeline'
   };
-  readyData = false;
   fechaSeleccionada: Date;
   maxDate: any = new Date(new Date().setDate(new Date().getDate() - 1)).toISOString();
 
-  @ViewChild('lineCanvas') lineCanvas: ElementRef;
-
   constructor(
     private apiServer: ApiServerService,
-    private nativeStorage: NativeStorage) { }
+    private nativeStorage: NativeStorage
+  ) { }
 
   ngOnInit() {
-    this.fechaSeleccionada = this.maxDate;
     this.nativeStorage.getItem('usuario').then((res: UsuarioAppI) => {
       this.apiServer.token = res.token;
       console.log('DeteccionesPage::ngOnInit::nativeStorage::getItem("usuario")::OK: ', res);
       // Obtener habitaciones registradas
       this.getDetecciones();
-      this.getInHomeNow();
     }).catch(error => {
       console.error('DeteccionesPage::ngOnInit::nativeStorage.getItem::ERROR: ', error);
     });
@@ -52,15 +46,6 @@ export class DeteccionesPage implements OnInit {
       console.log('DeteccionesPage::getDetecciones::this.detecciones[0].fecha_ini.getDate(): ' + this.detecciones[0].fecha_ini.getDate());
     }, error => {
       console.error('DeteccionesPage::getDetecciones::ERROR: ', error);
-    });
-  }
-
-  getInHomeNow(){
-    this.apiServer.getDeteccionesInHomeNow().subscribe((dRes: DeteccionDispositivoI[]) => {
-      console.log('DeteccionesPage::getInHomeNow::OK: ', dRes);
-      this.deteccionesInHome = dRes;
-    }, error => {
-      console.error('DeteccionesPage::getInHomeNow::ERROR: ', error);
     });
   }
 
@@ -107,6 +92,5 @@ export class DeteccionesPage implements OnInit {
     }
     this.readyData = true;
   }
-
 
 }

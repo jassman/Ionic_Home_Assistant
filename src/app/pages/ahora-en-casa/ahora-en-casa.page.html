@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ahoraEnCasa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label>Seleccionar fecha</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="fechaSeleccionada" (ionChange)="updateChart()" placeholder="Seleccionar fecha"></ion-datetime>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col *ngIf="readyData; else loading">
+      <google-chart [data]="timelineChart"></google-chart>
+      <ng-template #loading>
+        <!-- Bubbles -->
+        <ion-spinner class="loader-slider" name="bubbles"></ion-spinner>
+      </ng-template>
+    </ion-col>
+  </ion-row>
+</ion-content>

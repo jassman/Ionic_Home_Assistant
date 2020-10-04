@@ -46,7 +46,8 @@ export class ParticulasPage implements OnInit {
 
   createMetadataChart() {
     const datos: any[] = [];
-    datos.push(['Fecha', 'AQI', 'PM 2.5', 'PM 10']);
+    let color;
+    datos.push(['Fecha', 'AQI', { role: 'style' }, 'PM 2.5', 'PM 10']);
     this.particulas.forEach(element => {
       const dia = element.fecha.getDate();
       const mes = element.fecha.getMonth();
@@ -57,11 +58,26 @@ export class ParticulasPage implements OnInit {
       const formatHoras = horas < 10 ? '0' + horas : horas;
       const formatMinutos = minutos < 10 ? '0' + minutos : minutos;
 
+      if (element.aqi < 51) {
+        color = 'green';
+      } else if (element.aqi < 101) {
+        color = 'yellow';
+      } else if (element.aqi < 151) {
+        color = 'orange';
+      } else if (element.aqi < 201) {
+        color = 'red';
+      } else if (element.aqi < 301) {
+        color = 'purple';
+      } else {
+        color = 'maroon';
+      }
+
       datos.push([
         formatDia + '/' + formatMes + ' ' + formatHoras + ':' + formatMinutos,
         element.aqi,
+        color,
         element.pm25,
-        element.pm10
+        element.pm10,
       ]);
     });
 
@@ -71,6 +87,10 @@ export class ParticulasPage implements OnInit {
       options: {
         width: '100%',
         title: 'Particulas polvo',
+        explorer: {
+          axis: 'horizontal',
+          keepInBounds: true
+        },
         animation: {
           duration: 1000,
           easing: 'out',

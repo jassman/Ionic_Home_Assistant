@@ -20,6 +20,7 @@ export class HomePage implements OnInit {
   options: SpeechRecognitionListeningOptions = {
     language: 'es-ES', // Fijamos el lenguage
     matches: 1, // //Nos devuelve la primera opción de lo que ha escuchado
+    showPopup: false,
   };
 
   constructor(
@@ -53,11 +54,11 @@ export class HomePage implements OnInit {
         console.log(frase);
         this.api.sendVoice(frase[0]).subscribe((res) => {
           console.log('HomePage::api.sendVoice::Respuesta: ' + JSON.stringify(res));
-          this.tts.textToSpeech(res.estan).then((ress) => {
-            console.log(ress);
-          }).catch((error) => {
-            console.log(error);
-          });
+          // this.tts.textToSpeech(res.estan).then((ress) => {
+          //   console.log(ress);
+          // }).catch((error) => {
+          //   console.log(error);
+          // });
         }, (error) => {
           console.error('HomePage::api.sendVoice::Error: ' + error);
         });
