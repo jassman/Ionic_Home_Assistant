@@ -47,8 +47,15 @@ export class ParticulasPage implements OnInit {
   createMetadataChart() {
     const datos: any[] = [];
     let color;
+    let size = 6;
+    let element;
+
     datos.push(['Fecha', 'AQI', { role: 'style' }, 'PM 2.5', 'PM 10']);
-    this.particulas.forEach(element => {
+    if ( this.particulas.length < 6 ) {
+      size = this.particulas.length - 1;
+    }
+    for (let i = 0; i < size; i++) {
+      element = this.particulas[i];
       const dia = element.fecha.getDate();
       const mes = element.fecha.getMonth();
       const horas = element.fecha.getHours();
@@ -79,7 +86,9 @@ export class ParticulasPage implements OnInit {
         element.pm25,
         element.pm10,
       ]);
-    });
+    }
+    // this.particulas.forEach(element => {
+    // });
 
     this.timelineChart = {
       chartType: 'ColumnChart',
@@ -98,6 +107,7 @@ export class ParticulasPage implements OnInit {
         }
       }
     };
+
     console.log(this.timelineChart.component);
     if (this.timelineChart.component !== undefined) {
       this.timelineChart.component.draw();
