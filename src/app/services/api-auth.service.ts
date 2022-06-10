@@ -11,7 +11,7 @@ export class ApiAuthService {
 
   apiURL = 'https://192.168.1.44/apiapp/';
   user = 'jasapp';
-  password = 'jasdjango2.';
+  password = '';
 
   constructor(private http: HttpClient) { 
      console.log("ApiAuthService::constructor");
